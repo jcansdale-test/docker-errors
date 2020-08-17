@@ -1,20 +1,21 @@
 on:
   push:
 
-env:
-  image-name: docker-errors
-
 jobs:
   publish:
     strategy:      
       matrix:
         number: [0]
         include:
+          - image-name: docker-errors
+          - tag-name: latest
           - source-image: alpine:latest
-          - image: docker.pkg.github.com/${{ github.repository }}/${{ env.image-name }}:latest
       fail-fast: false
 
     runs-on: ubuntu-latest
+
+    env:
+      image: docker.pkg.github.com/${{ github.repository }}/${{ matrix.image-name }}:${{ matrix.tag-name }}
 
     steps:
     - run: docker pull ${{ matrix.source-image }}
