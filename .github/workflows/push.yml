@@ -5,13 +5,14 @@ jobs:
   publish:
     strategy:      
       matrix:
-        number: [0, 1, 2, 3, 4]
+        number: [0, 1, 2, 3, 4, 5]
         include:
           - domain-name: docker.pkg.github.com
           - image-name: docker-errors
           - tag-name: latest
           - source-image: alpine:latest
           - github-repository: ${{ github.repository }}
+          - token: ${{ github.token }}
           - number: 0
             job-name: success
           - number: 1
@@ -26,6 +27,9 @@ jobs:
           - number: 4
             job-name: wrong repo
             github-repository: desktop/desktop
+          - number: 5
+            job-name: no scope token
+            token: "2a78e44b221e182c6e1e24fe9aec7e76f122391b" # no-scope token
       fail-fast: false
     name: ${{ matrix.job-name }}
     runs-on: ubuntu-latest
