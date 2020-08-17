@@ -1,6 +1,9 @@
 on:
   push:
 
+env:
+  image-name: docker-errors
+
 jobs:
   publish:
     strategy:      
@@ -8,7 +11,7 @@ jobs:
         number: [0]
         include:
           - source-image: alpine:latest
-          - image: docker.pkg.github.com/${{ github.repository }}/image:latest
+          - image: docker.pkg.github.com/${{ github.repository }}/${{ env.image-name }}:latest
       fail-fast: false
 
     runs-on: ubuntu-latest
