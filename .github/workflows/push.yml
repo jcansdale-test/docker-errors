@@ -10,6 +10,7 @@ jobs:
           - image-name: docker-errors
           - tag-name: latest
           - source-image: alpine:latest
+          - github-repository: ${{ github.repository }}
           - number: 0
             job-name: success
           - number: 1
@@ -23,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      image: docker.pkg.github.com/${{ github.repository }}/${{ matrix.image-name }}:${{ matrix.tag-name }}
+      image: docker.pkg.github.com/${{ matrix.github-repository }}/${{ matrix.image-name }}:${{ matrix.tag-name }}
 
     steps:
     - run: docker pull ${{ matrix.source-image }}
