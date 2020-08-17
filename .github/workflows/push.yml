@@ -21,4 +21,4 @@ jobs:
     - run: docker pull ${{ matrix.source-image }}
     - run: docker tag ${{ matrix.source-image }} ${{ env.image }}
     - run: docker login https://docker.pkg.github.com -u token -p ${{ github.token }}
-    - run: docker push ${{ matrix.image }}
+    - run: docker push ${{ env.image }}
