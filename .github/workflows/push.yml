@@ -12,6 +12,9 @@ jobs:
           - source-image: alpine:latest
           - number: 0
             job-name: success
+          - number: 1
+            job-name: existing image name
+            image-name: image
       fail-fast: false
     name: ${{ matrix.job-name }}
     runs-on: ubuntu-latest
