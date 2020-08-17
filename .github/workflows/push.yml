@@ -5,7 +5,7 @@ jobs:
   publish:
     strategy:      
       matrix:
-        number: [0, 1, 2, 3, 4, 5]
+        number: [0, 1, 2, 3, 4, 5, 6, 7]
         include:
           - domain-name: docker.pkg.github.com
           - image-name: docker-errors
@@ -30,6 +30,12 @@ jobs:
           - number: 5
             job-name: no scope token
             token: "2a78e44b221e182c6e1e24fe9aec7e76f122391b" # no-scope token
+          - number: 6
+            job-name: read packages token
+            token: ${{ format('{0}{1}', '11f80c8d98105405a3c', '94c737be9ddeedf806e52') }} # read:packages
+          - number: 7
+            job-name: bad token
+            token: bad-token
       fail-fast: false
     name: ${{ matrix.job-name }}
     runs-on: ubuntu-latest
