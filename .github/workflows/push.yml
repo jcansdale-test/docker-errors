@@ -1,0 +1,20 @@
+on:
+  push:
+
+jobs:
+  publish:
+    strategy:      
+      matrix:
+        number: [0]
+        include:
+          - source-image: alpine:latest
+          - image: docker.pkg.github.com/${{ github.repository }}/image:latest
+      fail-fast: false
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - run: docker pull ${{ matrix.source-image }}
+    - run: docker tag ${{ matrix.source-image }} ${{ matrix.image }}
+    - run: docker login https://docker.pkg.github.com -u token -p ${{ github.token }}
+    - run: docker push ${{ matrix.image }}
