@@ -7,6 +7,7 @@ jobs:
       matrix:
         number: [0, 1, 2, 3]
         include:
+          - domain-name: docker.pkg.github.com
           - image-name: docker-errors
           - tag-name: latest
           - source-image: alpine:latest
@@ -27,7 +28,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      image: docker.pkg.github.com/${{ matrix.github-repository }}/${{ matrix.image-name }}:${{ matrix.tag-name }}
+      image: ${{ matrix.domain-name }}/${{ matrix.github-repository }}/${{ matrix.image-name }}:${{ matrix.tag-name }}
 
     steps:
     - run: docker pull ${{ matrix.source-image }}
