@@ -15,6 +15,9 @@ jobs:
           - number: 1
             job-name: existing image name
             image-name: image
+          - number: 2
+            job-name: upper-case image name
+            image-name: DOCKER-ERRORS-UPPER-CASE
       fail-fast: false
     name: ${{ matrix.job-name }}
     runs-on: ubuntu-latest
