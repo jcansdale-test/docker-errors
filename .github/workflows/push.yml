@@ -10,8 +10,10 @@ jobs:
           - image-name: docker-errors
           - tag-name: latest
           - source-image: alpine:latest
+          - number: 0
+            job-name: success
       fail-fast: false
-
+    name: ${{ matrix.job-name }}
     runs-on: ubuntu-latest
 
     env:
