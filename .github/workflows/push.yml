@@ -5,7 +5,7 @@ jobs:
   publish:
     strategy:      
       matrix:
-        number: [0]
+        number: [0, 1]
         include:
           - image-name: docker-errors
           - tag-name: latest
