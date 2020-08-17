@@ -5,7 +5,7 @@ jobs:
   publish:
     strategy:      
       matrix:
-        number: [0, 1, 2]
+        number: [0, 1, 2, 3]
         include:
           - image-name: docker-errors
           - tag-name: latest
@@ -19,6 +19,9 @@ jobs:
           - number: 2
             job-name: upper-case image name
             image-name: DOCKER-ERRORS-UPPER-CASE
+          - number: 3
+            job-name: trailing dash
+            image-name: docker-errors-
       fail-fast: false
     name: ${{ matrix.job-name }}
     runs-on: ubuntu-latest
