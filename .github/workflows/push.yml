@@ -12,7 +12,7 @@ jobs:
           - tag-name: latest
           - source-image: alpine:latest
           - github-repository: ${{ github.repository }}
-          - token: ${{ github.token }}
+          - token: $GITHUB_TOKEN
           - number: 0
             job-name: success
           - number: 1
@@ -42,6 +42,7 @@ jobs:
 
     env:
       image: ${{ matrix.domain-name }}/${{ matrix.github-repository }}/${{ matrix.image-name }}:${{ matrix.tag-name }}
+      GITHUB_TOKEN: ${{ github.token }}
 
     steps:
     - run: docker pull ${{ matrix.source-image }}
