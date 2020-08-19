@@ -5,7 +5,7 @@ jobs:
   push:
     strategy:      
       matrix:
-        number: [0, 1, 2, 3, 4, 5, 6, 7]
+        number: [0, 1, 2, 3, 4, 5, 6, 7, 8]
         include:
           - domain-name: docker.pkg.github.com
           - image-name: docker-errors
@@ -36,6 +36,10 @@ jobs:
           - number: 7
             job-name: bad token
             token: bad-token
+          - number: 8
+            job-name: missing image name
+            github-repository: ${{ github.repository_owner }}
+            image-name: docker-errors
       fail-fast: false
     name: ${{ matrix.job-name }}
     runs-on: ubuntu-latest
