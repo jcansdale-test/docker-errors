@@ -51,5 +51,5 @@ jobs:
     steps:
     - run: docker pull ${{ matrix.source-image }}
     - run: docker tag ${{ matrix.source-image }} ${{ env.image }}
-    - run: docker login https://docker.pkg.github.com -u token --password-stdin <<< ${{ matrix.token }}
+    - run: docker login https://${{ matrix.domain-name }} -u token --password-stdin <<< ${{ matrix.token }}
     - run: docker push ${{ env.image }}
