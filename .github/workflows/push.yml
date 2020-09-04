@@ -41,7 +41,7 @@ jobs:
             github-repository: ${{ github.repository_owner }}
             image-name: docker-errors
       fail-fast: false
-    name: ${{ matrix.job-name }}
+    name: ${{ matrix.domain-name }}-${{ matrix.job-name }}
     runs-on: ubuntu-latest
 
     env:
