@@ -56,5 +56,3 @@ jobs:
     - run: docker tag ${{ matrix.source-image }} ${{ env.image }}
     - run: docker login https://${{ matrix.domain-name }} -u token --password-stdin <<< ${{ matrix.token }}
     - run: docker push ${{ env.image }}
-
-
