@@ -6,8 +6,8 @@ jobs:
     strategy:      
       matrix:
         number: [0, 1, 2, 3, 4, 5, 6, 7, 8]
+        domain-name: [ghcr.io, docker.pkg.github.com]
         include:
-          - domain-name: docker.pkg.github.com
           - image-name: docker-errors
           - tag-name: latest
           - source-image: alpine:latest
