@@ -34,13 +34,16 @@ jobs:
             job-name: read packages token
             token: ${{ format('{0}{1}', '11f80c8d98105405a3c', '94c737be9ddeedf806e52') }} # read:packages
           - number: 7
+            job-name: write packages token
+            token: $WRITE_PACKAGES_TOKEN
+          - number: 8
             job-name: bad token
             token: bad-token
-          - number: 8
+          - number: 9
             job-name: missing image name
             github-repository: ${{ github.repository_owner }}
             image-name: docker-errors
-          - number: 9
+          - number: 10
             job-name: publish-to-org
             github-repository: mutantdesign/docker-errors
       fail-fast: false
@@ -50,6 +53,7 @@ jobs:
     env:
       image: ${{ matrix.domain-name }}/${{ matrix.github-repository }}/${{ matrix.image-name }}:${{ matrix.tag-name }}
       PACKAGES_TOKEN: ${{ secrets.PACKAGES_TOKEN }}
+      WRITE_PACKAGES_TOKEN: ${{ secrets.WRITE_PACKAGES_TOKEN }}
 
     steps:
     - run: docker pull ${{ matrix.source-image }}
