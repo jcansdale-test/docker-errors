@@ -6,7 +6,7 @@ jobs:
     strategy:      
       matrix:
         domain-name: [ghcr.io, docker.pkg.github.com]
-        number: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+        number: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
         include:
           - image-name: docker-errors
           - tag-name: latest
@@ -49,6 +49,9 @@ jobs:
           - number: 11
             job-name: publish-to-org
             github-repository: mutantdesign/docker-errors
+          - number: 12
+            job-name: upper-case-tag
+            tag-name: UPPERCASE
       fail-fast: false
     name: ${{ matrix.domain-name }}-${{ matrix.job-name }}
     runs-on: ubuntu-latest
